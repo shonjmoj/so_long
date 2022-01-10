@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft.a
 
-
+all :
+	cd libft && make
 
 clean : 
 	cd libft && make clean
