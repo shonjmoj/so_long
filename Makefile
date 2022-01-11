@@ -2,17 +2,28 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT = libft.a
+NAME = so_long.a
 
-all :
+SRC = errors.c \
+		get_next_line.c 
+
+OBJ = ${SRC:.c=.o}
+
+$(NAME) : $(OBJ)
 	cd libft && make
+	ar rcs $(NAME) $(OBJ)
 
-clean : 
+all : $(NAME)
+
+%.o : %.c so_long.h
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean :
 	cd libft && make clean
 	rm -rf $(OBJ)
 
 fclean : clean
 	cd libft && make fclean
-	rm -rf so_long a.out
+	rm -rf so_long a.out $(NAME)
 
 re : fclean all

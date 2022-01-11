@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:11:22 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/10 15:49:12 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/11 12:44:06 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,27 @@ void	ft_join_and_free(char **str, void *buf)
 	ft_free(str);
 	*str = tmp;
 	return ;
+}
+
+char	*ft_free(char **adr_str)
+{
+	if (adr_str != NULL && *adr_str != NULL)
+	{
+		free(*adr_str);
+		*adr_str = NULL;
+	}
+	return (NULL);
+}
+
+void	free_tab(char **tab) {
+	int i;
+
+	i = 0;
+	while (tab[i]) {
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
 
 char	*get_line(ssize_t readr, char **str_input)
