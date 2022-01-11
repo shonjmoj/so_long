@@ -124,6 +124,7 @@ int check_map_walls(char *map)
 	arr = ft_split(map, '\n');
 	while(arr[i])
 	{
+		printf("%s\n", arr[i]);
 		if (!first_and_last(arr[i]))
 		{
 			free_tab(arr);
