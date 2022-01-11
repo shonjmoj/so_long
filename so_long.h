@@ -23,5 +23,6 @@ char	*get_line(ssize_t readr, char **str_input);
 void	ft_join_and_free(char **str, void *buf);
 int		check_map_ext(char* filname);
 char	*get_map_caracters(char *map);
+int		raise_error(int error);
 
 #endif

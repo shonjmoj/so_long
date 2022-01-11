@@ -28,7 +28,7 @@ static char	*get_ext(char *filename)
 	return (ext);
 }
 
-int	check_map_ext(char* filname)
+static int	check_map_ext(char* filname)
 {
 	if (ft_strncmp(".ber", get_ext(filname), ft_strlen(".ber")) == 0)
 		return (1);
@@ -47,6 +47,8 @@ char	*get_map_caracters(char *map)
 	line = NULL;
 	fd_map = open(map, O_RDONLY);
 	caracters = NULL;
+	if (!check_map_ext(map))
+		return NULL;
 	line = get_next_line(fd_map);
 	while (line)
 	{
@@ -68,9 +70,28 @@ int	check_map_caracters(char *caracters)
 	return (0);
 }
 
-int main ()
+int	check_map_rectangular(char *map)
 {
-	char *str = get_map_caracters("map.ber");
-	printf("%s\n", str);
-	free(str);
+	char	**arr;
+	int		i;
+	int		j;
+
+	arr = ft_split(get_map_caracters(map), '\n');
+	j = 0;
+	i = ft_strlen(arr[0]);
+	while (arr[j] != NULL)
+		j++;
+	if (i <= j)
+	{
+		ft_free(arr);
+		raise_error(printf("Error\n"));
+	}
+	ft_free(arr);
+	return (1);
+}
+
+int main()
+{
+	int	i = 0;
+	printf("%d", check_map_rectangular("map.ber"));
 }
