@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:11:22 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/11 12:44:06 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:48:46 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ char	*ft_free(char **adr_str)
 	return (NULL);
 }
 
-void	free_tab(char **tab) {
-	int i;
+void	free_tab(char **tab)
+{
+	int	i;
 
 	i = 0;
-	while (tab[i]) {
+	while (tab[i])
+	{
 		free(tab[i]);
 		i++;
 	}

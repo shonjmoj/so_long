@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = so_long.a
 
 SRC = errors.c \
-		get_next_line.c 
+		get_next_line.c \
+		check_map_utils.c
 
 OBJ = ${SRC:.c=.o}
 

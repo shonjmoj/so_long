@@ -1,36 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/11 19:50:10 by elounejj          #+#    #+#             */
+/*   Updated: 2022/01/11 20:00:41 by elounejj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-static char *get_ext(char *filename)
+int	check_map_ext(char *filname)
 {
-	int i;
-	int j;
-	char *ext;
-
-	i = 0;
-	ext = NULL;
-	j = ft_strlen(filename);
-	while (filename[j - 1] >= 0)
-	{
-		if (filename[j - 1] == '.')
-		{
-			j--;
-			break;
-		}
-		j--;
-	}
-	ext = malloc(sizeof(char) * (j + 2));
-	while (filename[i + j])
-	{
-		ext[i] = filename[i + j];
-		i++;
-	}
-	ext[i] = '\0';
-	return (ext);
-}
-
-int check_map_ext(char *filname)
-{
-	char *ext;
+	char	*ext;
 
 	ext = get_ext(filname);
 	if (ft_strncmp(".ber", ext, ft_strlen(".ber")) == 0)
@@ -42,49 +26,23 @@ int check_map_ext(char *filname)
 	return (0);
 }
 
-char *get_map_caracters(char *map)
+int	check_map_caracters(char *characters)
 {
-	char *line;
-	char *caracters;
-	int i;
-	int fd_map;
-
-	i = 0;
-	line = NULL;
-	fd_map = open(map, O_RDONLY);
-	caracters = NULL;
-	if (!check_map_ext(map))
-		return NULL;
-	line = get_next_line(fd_map);
-	while (line)
-	{
-		if (!caracters)
-			caracters = ft_strdup(line);
-		else
-			ft_join_and_free(&caracters, line);
-		free(line);
-		line = get_next_line(fd_map);
-	}
-	free(line);
-	return (caracters);
-}
-
-int check_map_caracters(char *caracters)
-{
-	if (ft_strchr(caracters, 'P') && ft_strchr(caracters, 'C') && ft_strchr(caracters, 'E'))
+	if (ft_strchr(characters, 'P') && ft_strchr(characters, 'C') \
+									&& ft_strchr(characters, 'E'))
 		return (1);
 	return (0);
 }
 
-int check_map_rectangular(char *map)
+int	check_map_rectangular(char *map)
 {
-	char **arr;
-	int i;
-	int j;
-	char *caractere;
+	char	**arr;
+	int		i;
+	int		j;
+	char	*characters;
 
-	caractere = get_map_caracters(map);
-	arr = ft_split(caractere, '\n');
+	characters = get_map_caracters(map);
+	arr = ft_split(characters, '\n');
 	j = 0;
 	i = ft_strlen(arr[0]);
 	while (arr[j] != NULL)
@@ -92,53 +50,63 @@ int check_map_rectangular(char *map)
 	if (i <= j)
 	{
 		free_tab(arr);
-		free(caractere);
+		free(characters);
 		raise_error();
 	}
 	free_tab(arr);
-	free(caractere);
+	free(characters);
 	return (1);
 }
 
-int	first_and_last(char *str)
-{
-	int	i;
-	int	first;
-	int last;
-
-	i = 0;
-	first = str[0];
-	last = str[ft_strlen(str) - 1];
-	if (first == '1' && last == '1')
-		return (1);
-	return (0);
-}
-
-int check_map_walls(char *map)
+int	check_map_walls(char *map)
 {
 	char	**arr;
+	char	*characters;
 	int		i;
 	int		j;
 
 	i = 0;
-	arr = ft_split(map, '\n');
-	while(arr[i])
+	characters = get_map_caracters(map);
+	arr = ft_split(characters, '\n');
+	while (arr[i])
 	{
-		printf("%s\n", arr[i]);
 		if (!first_and_last(arr[i]))
 		{
+			free(characters);
 			free_tab(arr);
-			// raise_error();
+			raise_error();
 			return (0);
 		}
 		i++;
 	}
+	free(characters);
 	free_tab(arr);
 	return (1);
 }
 
-int main()
+int	check_map(char *map)
 {
-	int i = 0;
-	printf("%d", check_map_walls("map.ber"));
+	int		i;
+	char	**arr;
+	char	*characters;
+
+	i = 0;
+	characters = get_map_caracters(map);
+	arr = ft_split(characters, '\n');
+	while (arr[i])
+		i++;
+	if (!line_all_ones(arr[0]) && !line_all_ones(arr[i - 1]))
+	{
+		free(characters);
+		free_tab(arr);
+		raise_error();
+	}
+	free(characters);
+	free_tab(arr);
+	return (1);
 }
+
+// int main()
+// {
+// 	printf("%d",check_map("map.ber"));
+// }
