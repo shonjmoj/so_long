@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/11 19:54:20 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:08:18 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int		check_map_ext(char *filname);
 char	*get_map_caracters(char *map);
 int		raise_error(void);
 void	free_tab(char **tab);
-int		line_all_ones(char *line);
-
+int		line_all_ones(char *line, char one);
+int		is_found(char *s, char c);
+int		tab_length(char **arr);
+int		check_length_walls(char **map);
 #endif

@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:48:54 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/11 20:00:52 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:14:45 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ char	*get_ext(char *filename)
 	}
 	ext[i] = '\0';
 	return (ext);
+}
+
+int	check_map_ext(char *filname)
+{
+	char	*ext;
+
+	ext = get_ext(filname);
+	if (ft_strncmp(".ber", ext, ft_strlen(".ber")) != 0)
+	{
+		free(ext);
+		return (0);
+	}
+	free(ext);
+	return (1);
 }
 
 char	*get_map_caracters(char *map)
@@ -81,16 +95,18 @@ int	first_and_last(char *str)
 	return (0);
 }
 
-int	line_all_ones(char *line)
+int	check_length_walls(char **map)
 {
-	int	i;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	while (line[i])
+	len = ft_strlen(map[0]);
+	while (map[i])
 	{
-		if (line[i] != '1')
+		if (ft_strlen(map[i]) > len || ft_strlen(map[i]) < len)
 			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
