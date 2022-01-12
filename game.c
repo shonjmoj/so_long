@@ -1,35 +1,48 @@
 #include "so_long.h"
 
-
-int deal_key(int key, t_game *game)
+void	draw_assets(t_game *game, void *img, char asset)
 {
-	if (key == KEY_A)
-		ft_putendl_fd("A", 0);
-	else if (key == KEY_W)
-		ft_putendl_fd("W", 0);
-	else if (key == KEY_S)
-		ft_putendl_fd("S", 0);
-	else if (key == KEY_D)
-		ft_putendl_fd("D", 0);
-	else if (key == KEY_ESC || key == KEY_Q)
-		exit(0);
-	return (0);
-}
+	int	i;
+	int	j;
 
-int	red_cross(t_game *game)
-{
-	mlx_destroy_window(game->ptr, game->window);
-	exit(0);
+	i = 0;
+	while(game->map[i])
+	{
+		j = 0;
+		while(game->map[i][j])
+		{
+			if (game->map[i][j] == asset)
+				draw_img(game, i, j, img);
+			j++;
+		}
+		i++;
+	}
 }
-
 
 int main() {
 	t_game	game;
+	int width;
+	int height;
+	void	*img;
+	void	*walls;
+	void	*door;
+	void	*colec;
+	void	*player;
 
-
+	game.map = check_map("map.ber");
 	game.ptr = mlx_init();
-	game.window= mlx_new_window(game.ptr, 1000, 500, "so_long");
-	mlx_pixel_put(game.ptr, game.window ,1000, 500, 0xFFFFFF);
+	window_size(&game);
+	game.window= mlx_new_window(game.ptr, game.width * 32, game.height * 32, "so_long");
+	img = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/floor.xpm", &width, &height);
+	walls = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/wall.xpm", &width, &height);
+	door = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/Door.xpm", &width, &height);
+	colec = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/COLEC.xpm", &width, &height);
+	player = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/Player.xpm", &width, &height);
+	draw_map(&game, img);
+	draw_assets(&game, walls, '1');
+	draw_assets(&game, door, 'E');
+	draw_assets(&game, colec, 'C');
+	draw_assets(&game, player, 'P');
 	mlx_hook(game.window, 2, 0, deal_key, &game);
 	mlx_hook(game.window, 17, 0, red_cross, &game);
 	mlx_loop(game.ptr);

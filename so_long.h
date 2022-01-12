@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 15:16:46 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:19:31 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 typedef struct s_game {
 	char	**map;
-	size_t	length_img;
-	size_t	width;
-	size_t	height;
+	int		length_img;
+	int		width;
+	int		height;
 	void	*window;
 	void	*ptr;
 }	t_game;
@@ -50,8 +50,14 @@ char	*get_map_caracters(char *map);
 char	*raise_error(void);
 void	free_tab(char **tab);
 int		line_all_ones(char *line, char one);
-int		is_found(char *s, char c);
+int		found(char *s, char c);
 int		tab_length(char **arr);
 int		check_length_walls(char **map);
+char	**check_map(char *map);
+void	draw_img(t_game *game, int i, int j, void *img);
+int		deal_key(int key);
+int		red_cross(t_game *game);
+void	window_size(t_game *game);
+void	draw_map(t_game *game, void *img);
 
 #endif

@@ -6,15 +6,15 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 11:33:45 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 13:14:22 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:02:53 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	tab_length(char **arr)
+int tab_length(char **arr)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (arr[i])
@@ -22,9 +22,9 @@ int	tab_length(char **arr)
 	return (i);
 }
 
-int	is_found(char *s, char c)
+int found(char *s, char c)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s[i])
@@ -36,9 +36,9 @@ int	is_found(char *s, char c)
 	return (0);
 }
 
-int	line_all_ones(char *line, char one)
+int line_all_ones(char *line, char one)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (line[i])

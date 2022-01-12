@@ -7,7 +7,9 @@ NAME = so_long.a
 SRC = errors.c \
 		get_next_line.c \
 		check_map_utils.c \
-		check_map_utils2.c
+		check_map_utils2.c \
+		check_map.c \
+		draw_map.c \
 
 # SO_LONG
 # 	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit game.c
