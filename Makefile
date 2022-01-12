@@ -9,13 +9,16 @@ SRC = errors.c \
 		check_map_utils.c \
 		check_map_utils2.c
 
+# SO_LONG
+# 	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit game.c
+
 OBJ = ${SRC:.c=.o}
 
 $(NAME) : $(OBJ)
 	cd libft && make
 	ar rcs $(NAME) $(OBJ)
 
-all : $(NAME)
+all : $(NAME) $(SO_LONG)
 
 %.o : %.c so_long.h
 	$(CC) $(CFLAGS) -o $@ -c $<

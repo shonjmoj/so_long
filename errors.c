@@ -6,15 +6,15 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:50 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/11 19:48:09 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:08:08 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	raise_error(void)
+char	*raise_error(void)
 {
 	printf("Error\n");
 	exit(1);
-	return (0);
+	return (NULL);
 }

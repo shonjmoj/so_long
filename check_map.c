@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:50:10 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 13:14:06 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:09:29 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_map_walls(char **map)
 	return (1);
 }
 
-int	check_map(char *map)
+char	**check_map(char *map)
 {
 	char	*characters;
 	char	**arr;
@@ -77,7 +77,13 @@ int	check_map(char *map)
 		free_tab(arr);
 		raise_error();
 	}
-	free_tab(arr);
-	free(characters);
-	return (1);
+	return (arr);
+}
+
+int main()
+{
+	char **map = check_map("map.ber");
+	int i = 0;
+	while(map[i])
+		printf("%s", map[i++]);
 }
