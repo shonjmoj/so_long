@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:38:19 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/13 16:09:31 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:47:37 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	player_moves(int key, t_game *game)
 
 int key_handler(int key, t_game *game)
 {
-	if (key == KEY_ESC || key == KEY_Q)
+	get_position(game, &game->exit_x, &game->exit_y, 'E');
+	if (key == KEY_ESC || key == KEY_Q || (game->player_x == game->exit_x && game->player_y == game->exit_y))
 	{
 		mlx_destroy_window(game->ptr, game->window);
 		exit(0);

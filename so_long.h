@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/13 16:08:37 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:44:19 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	g_move;
 
 typedef struct s_game {
 	char	**map;
-	int		length_img;
 	int		width;
 	int		height;
 	int		player_x;
@@ -33,6 +32,8 @@ typedef struct s_game {
 	int		collectible;
 	int		collectible_x;
 	int		collectible_y;
+	int		exit_x;
+	int		exit_y;
 	void	*window;
 	void	*ptr;
 	void	*walls;
