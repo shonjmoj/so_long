@@ -1,15 +1,36 @@
 #include "so_long.h"
 
-void	draw_assets(t_game *game, void *img, char asset)
+int count_collectibles(t_game *game)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
-	while(game->map[i])
+	game->collectible = 0;
+	while (game->map[i])
 	{
 		j = 0;
-		while(game->map[i][j])
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'C')
+				game->collectible++;
+			j++;
+		}
+		i++;
+	}
+	return (game->collectible);
+}
+
+void draw_assets(t_game *game, void *img, char asset)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
 		{
 			if (game->map[i][j] == asset)
 				draw_img(game, i, j, img);
@@ -19,31 +40,41 @@ void	draw_assets(t_game *game, void *img, char asset)
 	}
 }
 
-int main() {
-	t_game	game;
-	int width;
-	int height;
-	void	*img;
-	void	*walls;
-	void	*door;
-	void	*colec;
-	void	*player;
+void render_game(t_game *game, int width, int height)
+{
+	game->floor = mlx_xpm_file_to_image(game->ptr, "Assets/Texture/floor.xpm", &game->width, &game->height);
+	game->walls = mlx_xpm_file_to_image(game->ptr, "Assets/Texture/wall.xpm", &game->width, &game->height);
+	game->door = mlx_xpm_file_to_image(game->ptr, "Assets/Texture/Door.xpm", &game->width, &game->height);
+	game->collec = mlx_xpm_file_to_image(game->ptr, "Assets/Texture/COLEC.xpm", &game->width, &game->height);
+	game->player = mlx_xpm_file_to_image(game->ptr, "Assets/Texture/Player.xpm", &game->width, &game->height);
+}
 
+void render_assets(t_game *game)
+{
+	draw_floor(game, game->floor);
+	draw_assets(game, game->walls, '1');
+	draw_assets(game, game->door, 'E');
+	draw_assets(game, game->collec, 'C');
+	draw_assets(game, game->player, 'P');
+}
+
+int main()
+{
+	t_game game;
+
+	g_move = 0;
 	game.map = check_map("map.ber");
 	game.ptr = mlx_init();
 	window_size(&game);
-	game.window= mlx_new_window(game.ptr, game.width * 32, game.height * 32, "so_long");
-	img = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/floor.xpm", &width, &height);
-	walls = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/wall.xpm", &width, &height);
-	door = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/Door.xpm", &width, &height);
-	colec = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/COLEC.xpm", &width, &height);
-	player = mlx_xpm_file_to_image(game.ptr, "Assets/Texture/Player.xpm", &width, &height);
-	draw_map(&game, img);
-	draw_assets(&game, walls, '1');
-	draw_assets(&game, door, 'E');
-	draw_assets(&game, colec, 'C');
-	draw_assets(&game, player, 'P');
-	mlx_hook(game.window, 2, 0, deal_key, &game);
+	game.player_x = 0;
+	game.player_y = 0;
+	game.window = mlx_new_window(game.ptr, game.width * 32, game.height * 32, "so_long");
+	render_game(&game, game.width, game.height);
+	render_assets(&game);
+	get_position(&game, &game.player_x, &game.player_y, 'P');
+	count_collectibles(&game);
+	mlx_hook(game.window, 2, 0, key_handler, &game);
 	mlx_hook(game.window, 17, 0, red_cross, &game);
 	mlx_loop(game.ptr);
+	// printf("c = %d || x = %d || y = %d\n", game.collectible, game.player_x, game.player_y);
 }

@@ -6,25 +6,32 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 17:15:33 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 17:20:42 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:08:27 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int deal_key(int key)
+void	get_position(t_game *game, int *x, int *y, char asset)
 {
-	if (key == KEY_A)
-		ft_putendl_fd("A", 0);
-	else if (key == KEY_W)
-		ft_putendl_fd("W", 0);
-	else if (key == KEY_S)
-		ft_putendl_fd("S", 0);
-	else if (key == KEY_D)
-		ft_putendl_fd("D", 0);
-	else if (key == KEY_ESC || key == KEY_Q)
-		exit(0);
-	return (0);
+	int	i;
+	int	j;
+
+	i = 0;
+	while(game->map[i])
+	{
+		j = 0;
+		while(game->map[i][j])
+		{
+			if (game->map[i][j] == asset)
+			{
+				*x = i;
+				*y = j;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 int	red_cross(t_game *game)
@@ -50,7 +57,7 @@ void draw_img(t_game *game, int i, int j, void *img)
 	mlx_put_image_to_window(game->ptr, game->window, img, j * 32, i * 32);
 }
 
-void	draw_map(t_game *game, void *img)
+void	draw_floor(t_game *game, void *img)
 {
 	int	i;
 	int	j;

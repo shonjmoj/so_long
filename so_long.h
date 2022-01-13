@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 17:19:31 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/13 16:08:37 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,25 @@
 # include <stdlib.h>
 # include "./libft/libft.h"
 
+int	g_move;
+
 typedef struct s_game {
 	char	**map;
 	int		length_img;
 	int		width;
 	int		height;
+	int		player_x;
+	int		player_y;
+	int		collectible;
+	int		collectible_x;
+	int		collectible_y;
 	void	*window;
 	void	*ptr;
+	void	*walls;
+	void	*door;
+	void	*collec;
+	void	*player;
+	void	*floor;
 }	t_game;
 
 enum {
@@ -55,9 +67,14 @@ int		tab_length(char **arr);
 int		check_length_walls(char **map);
 char	**check_map(char *map);
 void	draw_img(t_game *game, int i, int j, void *img);
-int		deal_key(int key);
+int		player_moves(int key, t_game *game);
 int		red_cross(t_game *game);
 void	window_size(t_game *game);
-void	draw_map(t_game *game, void *img);
+void	draw_floor(t_game *game, void *img);
+void	draw_assets(t_game *game, void *img, char asset);
+void	render_assets(t_game *game);
+void	get_position(t_game *game, int *x, int *y, char asset);
+int		count_collectibles(t_game *game);
+int		key_handler(int key, t_game *game);
 
 #endif

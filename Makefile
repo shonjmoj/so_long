@@ -10,6 +10,7 @@ SRC = errors.c \
 		check_map_utils2.c \
 		check_map.c \
 		draw_map.c \
+		player_moves.c
 
 # SO_LONG
 # 	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit game.c
