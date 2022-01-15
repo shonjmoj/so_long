@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 12:12:49 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 14:52:23 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ int	g_move;
 
 typedef struct s_game {
 	char	**map;
+	char	*moves;
 	int		width;
 	int		height;
 	int		player_x;
 	int		player_y;
 	int		collected;
 	int		sum_of_collects;
-	int		collectible_x;
-	int		collectible_y;
 	int		exit_x;
 	int		exit_y;
 	void	*window;
@@ -69,7 +68,7 @@ int		tab_length(char **arr);
 int		check_length_walls(char **map);
 char	**check_map(char *map);
 void	draw_img(t_game *game, int i, int j, void *img);
-int		player_moves(int key, t_game *game, void *asset);
+int		player_moves_and_display(int key, t_game *game, void *asset);
 int		player_moves2(int key, t_game *game, void *asset);
 int		red_cross(t_game *game);
 void	window_size(t_game *game);
@@ -82,5 +81,6 @@ int		key_handler(int key, t_game *game);
 int		count_collectibles(t_game *game);
 int		collecting(t_game *game);
 void	render_game(t_game *game);
+char	*get_moves(t_game *game, int moves);
 
 #endif

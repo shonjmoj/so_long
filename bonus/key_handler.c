@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 11:44:40 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 12:06:40 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 14:47:11 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	key_handler(int key, t_game *game)
 	if (game->player_x == game->exit_x && \
 		game->player_y == game->exit_y && \
 		game->collected != game->sum_of_collects)
-		player_moves(key, game, game->door);
-	player_moves(key, game, game->floor);
+		player_moves_and_display(key, game, game->door);
+	player_moves_and_display(key, game, game->floor);
 	return (0);
 }
 
