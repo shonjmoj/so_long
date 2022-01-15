@@ -1,51 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_utils2.c                                 :+:      :+:    :+:   */
+/*   check_collects.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 11:33:45 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 11:39:05 by elounejj         ###   ########.fr       */
+/*   Created: 2022/01/15 11:41:48 by elounejj          #+#    #+#             */
+/*   Updated: 2022/01/15 11:57:49 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	tab_length(char **arr)
+int	count_collectibles(t_game *game)
 {
 	int	i;
+	int	j;
+	int	count;
 
 	i = 0;
-	while (arr[i])
+	count = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'C')
+				count++;
+			j++;
+		}
 		i++;
-	return (i);
+	}
+	return (count);
 }
 
-int	found(char *s, char c)
+int	collecting(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	if (game->map[game->player_x][game->player_y] == 'C')
 	{
-		if (s[i] == c)
-			return (1);
-		i++;
+		game->collected++;
+		game->map[game->player_x][game->player_y] = '0';
 	}
 	return (0);
-}
-
-int	line_all_ones(char *line, char one)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] != one)
-			return (0);
-		i++;
-	}
-	return (1);
 }

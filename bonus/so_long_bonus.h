@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/14 16:43:06 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:12:49 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_game {
 	int		player_x;
 	int		player_y;
 	int		collected;
-	int		C;
+	int		sum_of_collects;
 	int		collectible_x;
 	int		collectible_y;
 	int		exit_x;
@@ -81,5 +81,6 @@ int		count_collectibles(t_game *game);
 int		key_handler(int key, t_game *game);
 int		count_collectibles(t_game *game);
 int		collecting(t_game *game);
+void	render_game(t_game *game);
 
 #endif

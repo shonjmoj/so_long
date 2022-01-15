@@ -6,11 +6,11 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:48:54 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 13:14:45 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:07:58 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	*get_ext(char *filename)
 {

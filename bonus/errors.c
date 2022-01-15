@@ -6,11 +6,11 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:50 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/12 14:08:08 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:03:43 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	*raise_error(void)
 {

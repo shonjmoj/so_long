@@ -6,11 +6,11 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:11:22 by aysarrar          #+#    #+#             */
-/*   Updated: 2022/01/11 19:48:46 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 12:10:46 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_join_and_free(char **str, void *buf)
 {
