@@ -6,7 +6,7 @@ NAME = mondatory/so_long.a
 
 BONUS = bonus/so_long_bonus.a
 
-SRC = mondatory/errors.c \
+SRC = mondatory/end_message.c \
 		mondatory/get_next_line.c \
 		mondatory/check_map_utils.c \
 		mondatory/check_map_utils2.c \
@@ -16,7 +16,7 @@ SRC = mondatory/errors.c \
 		mondatory/draw_map.c \
 		mondatory/player_moves.c
 
-BNS = bonus/errors.c \
+BNS = bonus/end_message.c \
 		bonus/get_next_line.c \
 		bonus/check_map_utils.c \
 		bonus/check_map_utils2.c \

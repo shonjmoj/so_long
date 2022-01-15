@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 11:44:40 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 15:42:54 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 18:26:50 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	key_handler(int key, t_game *game)
 	if (key == KEY_ESC || key == KEY_Q)
 	{
 		mlx_destroy_window(game->ptr, game->window);
+		free_tab(game->map);
 		exit(0);
 	}
 	if (game->player_x == game->exit_x && \
@@ -53,6 +54,7 @@ int	key_handler(int key, t_game *game)
 		game->collected == game->sum_of_collects)
 	{
 		mlx_destroy_window(game->ptr, game->window);
+		free_tab(game->map);
 		you_win();
 	}
 	if (game->player_x == game->exit_x && \
