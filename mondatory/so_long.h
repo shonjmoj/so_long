@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 11:49:31 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 15:41:13 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int		key_handler(int key, t_game *game);
 int		count_collectibles(t_game *game);
 int		collecting(t_game *game);
 void	render_game(t_game *game);
+void	you_win(void);
 
 #endif

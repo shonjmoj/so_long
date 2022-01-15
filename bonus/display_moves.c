@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:47:14 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 15:00:05 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 15:52:26 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ char	*get_moves(t_game *game, int moves)
 		draw_assets(game, game->walls, '1');
 	}
 	game->moves = ft_itoa(moves);
-	mlx_string_put(game->ptr, game->window, 5, 5, 0x000000, game->moves);
+	mlx_string_put(game->ptr, game->window, 5, 5, 0xf9ff00, game->moves);
 	return (game->moves);
 }

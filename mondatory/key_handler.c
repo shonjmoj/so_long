@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 11:44:40 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 11:56:40 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 15:42:54 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,17 @@ int	red_cross(t_game *game)
 int	key_handler(int key, t_game *game)
 {
 	collecting(game);
-	if (key == KEY_ESC || key == KEY_Q || \
-		(game->player_x == game->exit_x && \
-		game->player_y == game->exit_y && \
-		game->collected == game->sum_of_collects))
+	if (key == KEY_ESC || key == KEY_Q)
 	{
 		mlx_destroy_window(game->ptr, game->window);
 		exit(0);
+	}
+	if (game->player_x == game->exit_x && \
+		game->player_y == game->exit_y && \
+		game->collected == game->sum_of_collects)
+	{
+		mlx_destroy_window(game->ptr, game->window);
+		you_win();
 	}
 	if (game->player_x == game->exit_x && \
 		game->player_y == game->exit_y && \

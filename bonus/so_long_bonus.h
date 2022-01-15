@@ -6,7 +6,7 @@
 /*   By: elounejj <ounejjarmehdi@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:47:05 by elounejj          #+#    #+#             */
-/*   Updated: 2022/01/15 14:52:23 by elounejj         ###   ########.fr       */
+/*   Updated: 2022/01/15 15:46:37 by elounejj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ int		count_collectibles(t_game *game);
 int		collecting(t_game *game);
 void	render_game(t_game *game);
 char	*get_moves(t_game *game, int moves);
+void	you_win(void);
 
 #endif
